@@ -109,6 +109,14 @@ public class RegisteredPlayer {
         return schemes == null ? EmptyList : schemes;
     }
 
+    /**
+     * Give this player a scheme deck outside of the Archenemy variant. Any player whose scheme deck is not empty
+     * sets a scheme in motion at the start of each of their precombat main phases (see PhaseHandler).
+     */
+    public void setSchemes(Iterable<? extends IPaperCard> schemes0) {
+        this.schemes = schemes0;
+    }
+
     public Iterable<PaperCard> getPlanes() {
         return planes == null ? EmptyList : planes;
     }

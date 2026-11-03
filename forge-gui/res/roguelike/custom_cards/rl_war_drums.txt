@@ -1,0 +1,8 @@
+Name:RL War Drums
+ManaCost:no cost
+Types:Enchantment
+S:Mode$ Continuous | EffectZone$ Command | Affected$ Creature.YouCtrl | AddKeyword$ Haste | Description$ Creatures you control have haste.
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | CheckSVar$ C | SVarCompare$ EQ0 | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, if you control no creatures, create a 1/1 red Goblin creature token.
+SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ r_1_1_goblin | TokenOwner$ You
+SVar:C:Count$Valid Creature.YouCtrl
+Oracle:Creatures you control have haste.\nAt the beginning of your upkeep, if you control no creatures, create a 1/1 red Goblin creature token.

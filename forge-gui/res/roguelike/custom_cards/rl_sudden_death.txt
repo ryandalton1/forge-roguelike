@@ -1,0 +1,8 @@
+Name:RL Sudden Death
+ManaCost:no cost
+Types:Enchantment
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | CheckSVar$ T | SVarCompare$ GE7 | Execute$ TrigLose | TriggerDescription$ At the beginning of your upkeep, if this is your seventh turn or later, you lose life equal to the number of turns you've taken past your sixth.
+SVar:TrigLose:DB$ LoseLife | Defined$ You | LifeAmount$ X
+SVar:T:Count$YourTurns
+SVar:X:Count$YourTurns/Minus.6
+Oracle:At the beginning of your upkeep, if this is your seventh turn or later, you lose life equal to the number of turns you've taken past your sixth.

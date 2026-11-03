@@ -1,0 +1,12 @@
+{
+  "id": "mire_zombies",
+  "name": "Mire Zombies",
+  "tier": "normal",
+  "ai": "Default",
+  "life": 12,
+  "startingHand": 5,
+  "deck": "decks/mire_zombies.dck",
+  "startBattlefield": ["Swamp", "Swamp"],
+  "commandZone": ["RL Restless Grave"],
+  "intro": "What you kill crawls back. Each upkeep it returns a random creature from its graveyard to its hand."
+}

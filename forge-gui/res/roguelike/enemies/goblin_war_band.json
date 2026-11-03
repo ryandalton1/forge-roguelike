@@ -1,0 +1,12 @@
+{
+  "id": "goblin_war_band",
+  "name": "Goblin War Band",
+  "tier": "normal",
+  "ai": "Reckless",
+  "life": 10,
+  "startingHand": 5,
+  "deck": "decks/goblin_war_band.dck",
+  "startBattlefield": ["Mountain", "Mountain"],
+  "commandZone": ["RL War Drums"],
+  "intro": "The war drums start up. Every goblin charges the turn it arrives."
+}

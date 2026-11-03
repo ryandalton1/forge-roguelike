@@ -1024,7 +1024,7 @@ public class MatchScreen extends FScreen {
     FSkinTexture currentBG = getBG();
 
     FSkinTexture getBG() {
-        if (Forge.isMobileAdventureMode) {
+        if (Forge.isMobileAdventureMode && !forge.adventure.roguelike.RunDuelScene.isActive()) {
             return AdventureBackgroundResolver.getBattleBackground();
         }
         return FSkinTexture.BG_MATCH;

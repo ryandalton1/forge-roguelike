@@ -1,0 +1,6 @@
+Name:RL Scheme Fire Barrage
+ManaCost:no cost
+Types:Scheme
+T:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBDamage | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, it deals 2 damage to each opponent.
+SVar:DBDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ 2
+Oracle:When you set this scheme in motion, it deals 2 damage to each opponent.
