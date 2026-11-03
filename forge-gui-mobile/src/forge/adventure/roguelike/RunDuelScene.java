@@ -39,12 +39,20 @@ public class RunDuelScene extends ForgeScene {
     /** True from start() until the match result has been handed back. MatchController checks it. */
     private static boolean active = false;
 
-    /** Preferences we change for faster fights, and restore afterwards. */
-    private static final FPref[] FAST_PREFS = {
-            FPref.YIELD_AUTO_PASS_NO_ACTIONS,
-            FPref.YIELD_SKIP_PHASE_DELAY,
-            FPref.YIELD_SKIP_RESOLVE_DELAY,
-    };
+    /**
+     * Preferences we set for the fight, and restore afterwards. Auto-pass skips priority stops where you have
+     * nothing to do, but it still stops when the enemy casts a spell, targets you or your permanents, or attacks,
+     * so you can see what happened. Phase and resolve delays stay on so the enemy's turn is readable.
+     */
+    private static final Map<FPref, String> FIGHT_PREFS = new EnumMap<>(Map.of(
+            FPref.YIELD_AUTO_PASS_NO_ACTIONS, "true",
+            FPref.YIELD_AUTO_PASS_RESPECTS_INTERRUPTS, "true",
+            FPref.YIELD_INTERRUPT_ON_OPPONENT_SPELL, "true",
+            FPref.YIELD_INTERRUPT_ON_TARGETING, "true",
+            FPref.YIELD_INTERRUPT_ON_ATTACKERS, "true",
+            FPref.YIELD_SKIP_PHASE_DELAY, "false",
+            FPref.YIELD_SKIP_RESOLVE_DELAY, "false"
+    ));
 
     private BattleSpec spec;
     private Consumer<BattleResult> onEnd;
@@ -157,9 +165,9 @@ public class RunDuelScene extends ForgeScene {
 
     private void applyFastPrefs() {
         savedPrefs.clear();
-        for (FPref p : FAST_PREFS) {
-            savedPrefs.put(p, FModel.getPreferences().getPref(p));
-            FModel.getPreferences().setPref(p, "true");
+        for (Map.Entry<FPref, String> e : FIGHT_PREFS.entrySet()) {
+            savedPrefs.put(e.getKey(), FModel.getPreferences().getPref(e.getKey()));
+            FModel.getPreferences().setPref(e.getKey(), e.getValue());
         }
     }
 
