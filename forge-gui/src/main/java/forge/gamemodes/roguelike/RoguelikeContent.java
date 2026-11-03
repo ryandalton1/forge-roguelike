@@ -95,6 +95,55 @@ public final class RoguelikeContent {
         return d;
     }
 
+    public static EnemySpec loadEnemy(String id) {
+        for (EnemySpec e : loadEnemies()) {
+            if (e.id.equals(id)) {
+                return e;
+            }
+        }
+        throw new IllegalArgumentException("[roguelike] unknown enemy: " + id);
+    }
+
+    public static ChampionSpec loadChampion(String id) {
+        ChampionSpec c = readJson("champions/" + id + ".json", ChampionSpec.class);
+        if (c.id == null) {
+            c.id = id;
+        }
+        return c;
+    }
+
+    public static ActSpec loadAct(String id) {
+        ActSpec a = readJson("acts/" + id + ".json", ActSpec.class);
+        if (a.id == null) {
+            a.id = id;
+        }
+        return a;
+    }
+
+    /** Card names in a reward pool file. Every name is checked against the card database. */
+    public static List<String> loadPool(String relativePath) {
+        CardPoolFile p = readJson(relativePath, CardPoolFile.class);
+        List<String> out = new ArrayList<>();
+        for (String n : p.cards) {
+            card(n); // fail fast on typos
+            out.add(n);
+        }
+        return out;
+    }
+
+    private static final class CardPoolFile {
+        String[] cards = new String[0];
+    }
+
+    private static <T> T readJson(String relativePath, Class<T> type) {
+        File f = new File(ROOT + relativePath);
+        try {
+            return GSON.fromJson(Files.readString(f.toPath(), StandardCharsets.UTF_8), type);
+        } catch (IOException e) {
+            throw new IllegalArgumentException("[roguelike] can't read " + f + ": " + e.getMessage(), e);
+        }
+    }
+
     /** All enemies in res/roguelike/enemies, sorted by tier then name. */
     public static List<EnemySpec> loadEnemies() {
         List<EnemySpec> out = new ArrayList<>();

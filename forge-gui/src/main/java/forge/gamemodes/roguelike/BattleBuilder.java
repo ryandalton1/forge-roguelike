@@ -48,6 +48,9 @@ public final class BattleBuilder {
 
         // Player
         Deck playerDeck = new Deck(spec.playerDeck, "RoguelikePlayerDeck");
+        if (spec.champion != null) {
+            RunController.addChampion(playerDeck, spec.champion);
+        }
         List<IPaperCard> playerBattlefield = new ArrayList<>(takeStartingLands(playerDeck.getMain(), fast.playerStartingLands));
         playerBattlefield.addAll(RoguelikeContent.cards(spec.playerBattlefield));
         List<IPaperCard> playerCommand = new ArrayList<>(RoguelikeContent.cards(spec.playerCommandZone));
@@ -58,6 +61,10 @@ public final class BattleBuilder {
         RegisteredPlayer human = new RegisteredPlayer(playerDeck);
         human.setPlayer(humanLobby);
         human.setTeamNumber(0);
+        human.setAlwaysGoesFirst(true);
+        if (spec.champion != null) {
+            human.assignCommander();
+        }
         human.setStartingLife(Math.max(1, spec.playerLife));
         human.setStartingHand(fast.playerStartingHand);
         human.addExtraCardsOnBattlefield(playerBattlefield);

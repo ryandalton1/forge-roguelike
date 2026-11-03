@@ -1,0 +1,5 @@
+Name:RL Lyra Power I
+ManaCost:no cost
+Types:Enchantment
+A:AB$ GainLife | Cost$ 1 W | ActivationZone$ Command | SorcerySpeed$ True | ActivationLimit$ 1 | Defined$ You | LifeAmount$ 2 | SpellDescription$ You gain 2 life. Activate only as a sorcery and only once each turn.
+Oracle:{1}{W}: You gain 2 life. Activate only as a sorcery and only once each turn.

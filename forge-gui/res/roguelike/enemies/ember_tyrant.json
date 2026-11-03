@@ -3,10 +3,17 @@
   "name": "The Ember Tyrant",
   "tier": "boss",
   "ai": "Default",
-  "life": 15,
+  "life": 12,
   "startingHand": 5,
   "deck": "decks/ember_tyrant.dck",
-  "startBattlefield": ["Mountain", "Mountain", "Mountain"],
-  "commandZone": ["RL Ember Tyrant Phase One", "RL Ember Tyrant Phase Two"],
-  "intro": "Phase One: a new whelp every upkeep, and dragons have haste. Bring it to 0 and Phase Two begins at 15 life."
+  "startBattlefield": [
+    "Mountain",
+    "Mountain",
+    "Mountain"
+  ],
+  "commandZone": [
+    "RL Ember Tyrant Phase One",
+    "RL Ember Tyrant Phase Two"
+  ],
+  "intro": "Phase One: it makes a dragon whelp each upkeep while it has fewer than 2 dragons, and its dragons have haste. Bring it to 0 and Phase Two begins at 12 life."
 }

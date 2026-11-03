@@ -3,13 +3,18 @@
   "name": "Pyromancer Adept",
   "tier": "elite",
   "ai": "Default",
-  "life": 16,
+  "life": 12,
   "startingHand": 5,
   "deck": "decks/pyromancer_adept.dck",
-  "startBattlefield": ["Mountain", "Mountain"],
+  "startBattlefield": [
+    "Mountain",
+    "Mountain"
+  ],
   "schemes": [
-    "RL Scheme Fire Barrage", "RL Scheme Fire Barrage",
-    "RL Scheme Kindle the Ranks", "RL Scheme Kindle the Ranks",
+    "RL Scheme Fire Barrage",
+    "RL Scheme Kindle the Ranks",
+    "RL Scheme Kindle the Ranks",
+    "RL Scheme Stoke the Flames",
     "RL Scheme Stoke the Flames"
   ],
   "intro": "The adept has a plan for every turn. It sets a scheme in motion at the start of each of its main phases."

@@ -66,7 +66,7 @@ public class StartScene extends UIScene {
         ui.addActor(version);
 
         // Roguelike mode playtest entry point (temporary, until the mode has its own menu).
-        TextraButton roguelikeButton = Controls.newTextButton("Roguelike Test",
+        TextraButton roguelikeButton = Controls.newTextButton("Roguelike",
                 () -> Forge.switchScene(forge.adventure.roguelike.RoguelikeTestScene.instance()));
         roguelikeButton.setBounds(5, 5, 100, 24);
         ui.addActor(roguelikeButton);

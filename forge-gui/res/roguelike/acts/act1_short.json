@@ -1,0 +1,5 @@
+{
+  "id": "act1_short",
+  "name": "Act 1 (short test run)",
+  "floors": ["normal", "normal", "elite", "boss"]
+}
