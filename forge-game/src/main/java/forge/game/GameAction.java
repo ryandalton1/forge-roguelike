@@ -2409,6 +2409,13 @@ public class GameAction {
                 return game.getPlayers().get(0);
             }
 
+            // Modes like the roguelike fix who starts instead of tossing a coin.
+            for (Player p : game.getPlayers()) {
+                if (p.getRegisteredPlayer() != null && p.getRegisteredPlayer().isAlwaysGoesFirst()) {
+                    return p;
+                }
+            }
+
             // 904.6: in Archenemy games the Archenemy goes first
             if (game.getRules().hasAppliedVariant(GameType.Archenemy)) {
                 for (Player p : game.getPlayers()) {

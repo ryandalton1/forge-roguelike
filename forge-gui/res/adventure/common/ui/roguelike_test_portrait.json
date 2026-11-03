@@ -40,8 +40,8 @@
     },
     {
       "type": "TextButton",
-      "name": "resetHp",
-      "text": "Reset HP",
+      "name": "newRun",
+      "text": "New Run",
       "selectable": true,
       "width": 80,
       "height": 22,

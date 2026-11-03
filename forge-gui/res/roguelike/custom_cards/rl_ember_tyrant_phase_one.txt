@@ -2,10 +2,11 @@ Name:RL Ember Tyrant Phase One
 ManaCost:no cost
 Types:Enchantment
 S:Mode$ Continuous | EffectZone$ Command | Affected$ Dragon.YouCtrl | AddKeyword$ Haste | Description$ Dragons you control have haste.
-T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, create a 2/2 red Dragon creature token with flying and "{R}: This creature gets +1/+0 until end of turn."
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | CheckSVar$ D | SVarCompare$ LT2 | Execute$ TrigToken | TriggerDescription$ At the beginning of your upkeep, if you control fewer than two Dragons, create a 2/2 red Dragon creature token with flying and "{R}: This creature gets +1/+0 until end of turn."
+SVar:D:Count$Valid Dragon.YouCtrl
 SVar:TrigToken:DB$ Token | TokenAmount$ 1 | TokenScript$ r_2_2_dragon_flying_firebreathing | TokenOwner$ You
-R:Event$ GameLoss | ActiveZones$ Command | ValidPlayer$ You | ReplaceWith$ ExileSetLife | Description$ If the Ember Tyrant would lose the game, instead exile CARDNAME, its life total becomes 15, and it deals 3 damage to each creature its opponents control. Phase Two begins.
+R:Event$ GameLoss | ActiveZones$ Command | ValidPlayer$ You | ReplaceWith$ ExileSetLife | Description$ If the Ember Tyrant would lose the game, instead exile CARDNAME, its life total becomes 12, and it deals 3 damage to each creature its opponents control. Phase Two begins.
 SVar:ExileSetLife:DB$ ChangeZone | Origin$ Command | Destination$ Exile | Defined$ Self | SubAbility$ DBSetLife
-SVar:DBSetLife:DB$ SetLife | Defined$ You | LifeAmount$ 15 | SubAbility$ DBSweep
+SVar:DBSetLife:DB$ SetLife | Defined$ You | LifeAmount$ 12 | SubAbility$ DBSweep
 SVar:DBSweep:DB$ DamageAll | ValidCards$ Creature.OppCtrl | NumDmg$ 3
-Oracle:Dragons you control have haste.\nAt the beginning of your upkeep, create a 2/2 red Dragon creature token with flying and "{R}: This creature gets +1/+0 until end of turn."\nIf the Ember Tyrant would lose the game, instead exile this, its life total becomes 15, and it deals 3 damage to each creature its opponents control. Phase Two begins.
+Oracle:Dragons you control have haste.\nAt the beginning of your upkeep, if you control fewer than two Dragons, create a 2/2 red Dragon creature token with flying and "{R}: This creature gets +1/+0 until end of turn."\nIf the Ember Tyrant would lose the game, instead exile this, its life total becomes 12, and it deals 3 damage to each creature its opponents control. Phase Two begins.

@@ -1,0 +1,10 @@
+{
+  "id": "lyra",
+  "name": "Lyra, Dawn Warden",
+  "description": "White/blue flyers and lifegain. Lyra grows each turn you gain life.",
+  "champion": "RL Lyra, Dawn Warden",
+  "powers": ["RL Lyra Power I"],
+  "startingDeck": "decks/lyra_starter.dck",
+  "rewardPool": "pools/lyra.json",
+  "maxHp": 30
+}

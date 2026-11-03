@@ -40,6 +40,7 @@ public class RegisteredPlayer {
     private Integer id = null;
     private boolean randomFoil = false;
     private boolean enableETBCountersEffect = false;
+    private boolean alwaysGoesFirst = false;
 
     public RegisteredPlayer(Deck deck0) {
         originalDeck = deck0;
@@ -113,6 +114,14 @@ public class RegisteredPlayer {
      * Give this player a scheme deck outside of the Archenemy variant. Any player whose scheme deck is not empty
      * sets a scheme in motion at the start of each of their precombat main phases (see PhaseHandler).
      */
+    /** When set, this player takes the first turn without a coin toss or play/draw choice. */
+    public boolean isAlwaysGoesFirst() {
+        return alwaysGoesFirst;
+    }
+    public void setAlwaysGoesFirst(boolean value) {
+        this.alwaysGoesFirst = value;
+    }
+
     public void setSchemes(Iterable<? extends IPaperCard> schemes0) {
         this.schemes = schemes0;
     }
