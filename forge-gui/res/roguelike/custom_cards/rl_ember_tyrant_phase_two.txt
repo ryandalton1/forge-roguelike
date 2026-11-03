@@ -1,0 +1,10 @@
+Name:RL Ember Tyrant Phase Two
+ManaCost:no cost
+Types:Enchantment
+S:Mode$ Continuous | EffectZone$ Command | Affected$ Card.Self | AffectedZone$ Command | RemoveAllAbilities$ True | IsPresent$ Card.namedRL Ember Tyrant Phase One | PresentZone$ Command | PresentCompare$ EQ1 | Description$ This has no abilities while Phase One is in the command zone.
+T:Mode$ Phase | Phase$ Upkeep | ValidPlayer$ You | TriggerZones$ Command | Execute$ TrigDamage | TriggerDescription$ At the beginning of your upkeep, this deals damage to each opponent equal to the number of Dragons you control.
+SVar:TrigDamage:DB$ DealDamage | Defined$ Player.Opponent | NumDmg$ X
+SVar:X:Count$Valid Dragon.YouCtrl
+T:Mode$ SpellCast | ValidCard$ Card.nonCreature | ValidActivatingPlayer$ Opponent | TriggerZones$ Command | ActivationLimit$ 1 | Execute$ TrigGain | TriggerDescription$ Whenever an opponent casts a noncreature spell, you gain 2 life. This ability triggers only once each turn.
+SVar:TrigGain:DB$ GainLife | Defined$ You | LifeAmount$ 2
+Oracle:(Inactive while Phase One is in the command zone.)\nAt the beginning of your upkeep, this deals damage to each opponent equal to the number of Dragons you control.\nWhenever an opponent casts a noncreature spell, you gain 2 life. This ability triggers only once each turn.

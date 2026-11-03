@@ -1,0 +1,6 @@
+Name:RL Scheme Kindle the Ranks
+ManaCost:no cost
+Types:Scheme
+T:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBToken | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, create two 1/1 red Elemental creature tokens with haste.
+SVar:DBToken:DB$ Token | TokenAmount$ 2 | TokenScript$ r_1_1_elemental_haste | TokenOwner$ You
+Oracle:When you set this scheme in motion, create two 1/1 red Elemental creature tokens with haste.

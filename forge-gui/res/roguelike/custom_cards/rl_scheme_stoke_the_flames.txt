@@ -1,0 +1,6 @@
+Name:RL Scheme Stoke the Flames
+ManaCost:no cost
+Types:Scheme
+T:Mode$ SetInMotion | ValidCard$ Card.Self | Execute$ DBDraw | TriggerZones$ Command | TriggerDescription$ When you set this scheme in motion, draw two cards.
+SVar:DBDraw:DB$ Draw | Defined$ You | NumCards$ 2
+Oracle:When you set this scheme in motion, draw two cards.

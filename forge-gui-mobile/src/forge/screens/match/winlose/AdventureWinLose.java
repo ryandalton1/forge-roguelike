@@ -1,6 +1,7 @@
 package forge.screens.match.winlose;
 
 import forge.Forge;
+import forge.adventure.roguelike.RunDuelScene;
 import forge.adventure.scene.DuelScene;
 import forge.game.GameView;
 
@@ -38,6 +39,10 @@ public class AdventureWinLose extends ControlWinLose {
     public void actionOnQuit() {
         saveOptions();
         getView().hide();
+        if (RunDuelScene.isActive()) {
+            RunDuelScene.instance().onMatchEnd();
+            return;
+        }
         DuelScene.instance().GameEnd();
         if (!DuelScene.instance().hasCallbackExit())
             DuelScene.instance().exitDuelScene();

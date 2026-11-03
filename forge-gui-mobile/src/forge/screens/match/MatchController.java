@@ -18,6 +18,7 @@ import forge.screens.LoadingOverlay;
 import forge.toolbox.FOverlay;
 import org.apache.commons.lang3.StringUtils;
 
+import forge.adventure.roguelike.RunDuelScene;
 import forge.adventure.scene.DuelScene;
 import forge.adventure.util.Config;
 import forge.game.GameState;
@@ -429,6 +430,14 @@ public class MatchController extends NetworkGuiGame {
 
     @Override
     public void finishGame() {
+        if (RunDuelScene.isActive() && getGameView().isMatchOver()
+                && (!Forge.isMobileAdventureMode || Config.instance().getSettingData().disableWinLose)) {
+            // Roguelike fights skip the win/lose screen when Adventure is set to, and hand the result back.
+            MatchController.writeMatchPreferences();
+            Forge.setCursor(null, "0");
+            RunDuelScene.instance().onMatchEnd();
+            return;
+        }
         if (Forge.isMobileAdventureMode) {
             if (Config.instance().getSettingData().disableWinLose) {
                 MatchController.writeMatchPreferences();
